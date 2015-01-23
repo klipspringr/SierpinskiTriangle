@@ -1,3 +1,19 @@
+import processing.core.*; 
+import processing.data.*; 
+import processing.event.*; 
+import processing.opengl.*; 
+
+import java.util.HashMap; 
+import java.util.ArrayList; 
+import java.io.File; 
+import java.io.BufferedReader; 
+import java.io.PrintWriter; 
+import java.io.InputStream; 
+import java.io.OutputStream; 
+import java.io.IOException; 
+
+public class SierpinskiTriangle extends PApplet {
+
 int sizeFactor, triangleSize, limitInt, redMeter, greenMeter, blueMeter;
 public void setup()
 {
@@ -22,7 +38,7 @@ public void draw()
 
 public void keyPressed()
 {
-	// System.out.println(limitInt);
+	System.out.println(limitInt);
 	loop();
 	if (keyCode == UP) {
 		if(limitInt < 220)
@@ -30,7 +46,7 @@ public void keyPressed()
 			redMeter += 3;
 			blueMeter += 3;
 			greenMeter += 3;
-			limitInt ++;
+			limitInt += 5;
 		}
       
     } else if (keyCode == DOWN) {
@@ -39,7 +55,7 @@ public void keyPressed()
     		redMeter -= 3;
 			blueMeter -= 3;
 			greenMeter -= 3;
-    		limitInt --;
+    		limitInt -= 1;
     	}
     } else if (key == ENTER || key == RETURN)
     {
@@ -69,4 +85,13 @@ public void sierpinski(int x, int y, int len)
 		triangle(x, y, x + len, y, x + (len/2), y - (len/1));
 	}
 
+}
+  static public void main(String[] passedArgs) {
+    String[] appletArgs = new String[] { "SierpinskiTriangle" };
+    if (passedArgs != null) {
+      PApplet.main(concat(appletArgs, passedArgs));
+    } else {
+      PApplet.main(appletArgs);
+    }
+  }
 }
