@@ -4,7 +4,7 @@ public void setup()
 	frameRate(8);
 	sizeFactor = 800;
 	triangleSize = 600;
-	limitInt = 100;
+	limitInt = 80;
 	redMeter = 1;
 	greenMeter = 1;
 	blueMeter = 1;
@@ -16,37 +16,45 @@ public void draw()
 	background(150);
 	sierpinski(100,700,triangleSize);
 	noLoop();
-
 }
 
 
 public void keyPressed()
 {
-	// System.out.println(limitInt);
 	loop();
-	if (keyCode == UP) {
+	if (keyCode == UP) 
+	{
 		if(limitInt < 220)
 		{
 			redMeter += 3;
 			blueMeter += 3;
 			greenMeter += 3;
-			limitInt ++;
+			limitInt += 2;
 		}
-      
-    } else if (keyCode == DOWN) {
+    } else if (keyCode == DOWN) 
+    {
     	if (limitInt > 1)
     	{
+    		if (limitInt > 80)
+    		{
+    		redMeter -= 3;
+			blueMeter -= 3;
+			greenMeter -= 3;
+    		limitInt -= 5;
+    		}else 
+    		{
     		redMeter -= 3;
 			blueMeter -= 3;
 			greenMeter -= 3;
     		limitInt --;
+    		}
     	}
     } else if (key == ENTER || key == RETURN)
     {
-    	limitInt = 100;
+    	limitInt = 80;
     	redMeter = 1;
 		greenMeter = 1;
-		 blueMeter = 1;
+		blueMeter = 1;
     }
 }
 
